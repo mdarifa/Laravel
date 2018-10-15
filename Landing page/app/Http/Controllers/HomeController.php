@@ -71,5 +71,9 @@ class HomeController extends Controller
         Message::onlyTrashed()->where('id',$message_id)->restore();
         return back();
     }
+    public function adminabout()
+    {
+        return view('admin.about.view');
+    }
 
 }

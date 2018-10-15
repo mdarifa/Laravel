@@ -12,3 +12,4 @@ Route::get('contact/message/markasread/{message_id}', 'HomeController@contactmes
 Route::get('contact/message/edit/{message_id}', 'HomeController@contactmessageedit');
 Route::post('contact/message/update', 'HomeController@contactmessageupdate');
 Route::get('contact/message/restore/{message_id}', 'HomeController@contactmessagerestore');
+Route::get('/admin/about', 'HomeController@adminabout');

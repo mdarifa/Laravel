@@ -87,9 +87,9 @@
       <div class="col-xs-12 col-md-6"> <img src="{{ asset('/frontend_res')}}/img/about.jpg" class="img-responsive" alt=""> </div>
       <div class="col-xs-12 col-md-6">
         <div class="about-text">
-          <h2>Who We Are</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <h3>Why Choose Us?</h3>
+          <h2>{{$about_info->about_title}}</h2>
+          <p> {{$about_info->about_details}}</p>
+          <h3>{{$about_info->about_point}}</h3>
           <div class="list-style">
             <div class="col-lg-6 col-sm-6 col-xs-12">
               <ul>

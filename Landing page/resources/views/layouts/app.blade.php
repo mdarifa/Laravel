@@ -40,6 +40,9 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ url('/') }}" target="_blank">View Site</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/admin/about') }}">About</a>
+                      </li>
                       @endauth
                     </ul>
 

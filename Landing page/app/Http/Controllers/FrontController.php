@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Message;
+use App\About;
 use Carbon\Carbon;
 
 class FrontController extends Controller
 {
     public function forntpage()
     {
-      return view('index');
+      $about_info = About::where('about_status', 2)->firstorFail();
+      return view('index', compact('about_info'));
     }
 
     public function team()
