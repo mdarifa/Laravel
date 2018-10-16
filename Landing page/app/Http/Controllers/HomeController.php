@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Message;
+use App\About;
+use Carbon\Carbon;
+use App\Contact;
 
 class HomeController extends Controller
 {
@@ -40,14 +43,8 @@ class HomeController extends Controller
         return view('admin/message/edit', compact('old_info'));
     }
 
-
-
-
-
     public function contactmessageupdate(Request $request)
     {
-
-
       $request->validate([
         'sender_name' => 'required',
         'sender_email' => 'required | email',
@@ -73,7 +70,31 @@ class HomeController extends Controller
     }
     public function adminabout()
     {
-        return view('admin.about.view');
+        $abouts = About::all();
+        return view('admin.about.view', compact('abouts'));
+    }
+    public function adminaboutinsert(Request $request)
+    {
+      $newinfoid = About::insertGetId([
+        "about_title" => $request->about_title,
+        "about_details" => $request->about_details,
+        "about_point" => $request->about_point,
+        "created_at" => Carbon::now()
+      ]);
+      if($request->hasFile('about_image')){
+        $path = $request->file('about_image')->store('front_images');
+        About::find($newinfoid)->update([
+          'about_image' => $path
+        ]);
+        return back();
+      }
+      return back();
+    }
+
+    public function admincontact()
+    {
+      $old_info = Contact::find(1);
+      return view('admin/contact/edit', compact('old_info'));
     }
 
 }

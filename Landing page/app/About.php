@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class About extends Model
 {
     use SoftDeletes;
+    protected $fillable = ['about_image'];
 }

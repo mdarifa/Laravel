@@ -19,6 +19,7 @@ class CreateAboutsTable extends Migration
             $table->longText('about_details')->nullable();
             $table->string('about_point')->default("Why Us?");
             $table->integer('about_status')->default("1");
+            $table->string('about_image')->default("front_images/about_image.jpg");
             $table->timestamps();
             $table->SoftDeletes();
         });

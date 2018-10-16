@@ -6,18 +6,15 @@
 <title>INNOVA</title>
 <meta name="description" content="">
 <meta name="author" content="">
-
 <!-- Favicons
     ================================================== -->
 <link rel="shortcut icon" href="{{ asset('/frontend_res')}}/img/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="{{ asset('/frontend_res')}}/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/frontend_res')}}/img/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/frontend_res')}}/img/apple-touch-icon-114x114.png">
-
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css"  href="{{ asset('/frontend_res')}}/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('/frontend_res')}}/fonts/font-awesome/css/font-awesome.css">
-
 <!-- Stylesheet
     ================================================== -->
 <link rel="stylesheet" type="text/css" href="{{ asset('/frontend_res')}}/css/style.css">
@@ -25,7 +22,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('/frontend_res')}}/css/nivo-lightbox/default.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <!-- Navigation
@@ -84,7 +80,7 @@
 <div id="about">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-md-6"> <img src="{{ asset('/frontend_res')}}/img/about.jpg" class="img-responsive" alt=""> </div>
+      <div class="col-xs-12 col-md-6"> <img src="{{ asset('storage/')}}/{{ $about_info->about_image }}" class="img-responsive" alt=""> </div>
       <div class="col-xs-12 col-md-6">
         <div class="about-text">
           <h2>{{$about_info->about_title}}</h2>
@@ -362,24 +358,25 @@
     <div class="col-md-3 col-md-offset-1 contact-info">
       <div class="contact-item">
         <h4>Contact Info</h4>
-        <p><span>Address</span>4321 California St,<br>
-          San Francisco, CA 12345</p>
+        <p><span>Address<address>
+          {{ $contact_info->address }}
+        </address></p>
       </div>
       <div class="contact-item">
-        <p><span>Phone</span> +1 123 456 1234</p>
+        <p><span>Phone</span> {{ $contact_info->phone }}</p>
       </div>
       <div class="contact-item">
-        <p><span>Email</span> info@company.com</p>
+        <p><span>Email</span> {{ $contact_info->email }}</p>
       </div>
     </div>
     <div class="col-md-12">
       <div class="row">
         <div class="social">
           <ul>
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="{{ $contact_info->facebook }}"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="{{ $contact_info->twitter }}"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="{{ $contact_info->google }}"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="{{ $contact_info->youtube }}"><i class="fa fa-youtube"></i></a></li>
           </ul>
         </div>
       </div>
@@ -393,12 +390,9 @@
   <input type='button' class='confirmButton btn btn-success' value='Ok'>
 </div>
 @endif
-
-
-
 <div id="footer">
   <div class="container text-center">
-    <p>&copy; 2017 INNOVA. Design by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
+    <p>&copy; {{ date('Y') }} Design by <a href="http://arif-ahmed.com/" target="_blank" rel="nofollow">Md. Arif Ahmed</a></p>
   </div>
 </div>
 <script type="text/javascript" src="{{ asset('/frontend_res')}}/js/jquery.1.11.1.js"></script>
