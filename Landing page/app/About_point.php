@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Work extends Model
+class About_point extends Model
 {
-    protected $fillable = ['work_image'];
+    //
 }

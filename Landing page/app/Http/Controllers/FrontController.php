@@ -9,6 +9,7 @@ use App\Contact;
 use App\Testimonial;
 use Carbon\Carbon;
 use App\Work;
+use App\Service;
 
 class FrontController extends Controller
 {
@@ -16,9 +17,11 @@ class FrontController extends Controller
     {
       $about_info = About::where('about_status', 2)->firstorFail();
       $testimonials = Testimonial::all();
+      $works = Work::all();
+      $services = Service::all();
       $contact_info = Contact::find(1)->firstorFail();
 
-      return view('index',compact('about_info','contact_info','testimonials'));
+      return view('index',compact('about_info','contact_info','testimonials','works','services'));
     }
 
     public function team()

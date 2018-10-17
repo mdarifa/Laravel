@@ -8,18 +8,18 @@
       <table class="table table-striped table-dark">
       <thead>
         <tr>
-          <th scope="col">Testimonial Name</th>
-          <th scope="col">Testimonial Details</th>
-          <th scope="col">Testimonial Image</th>
+          <th scope="col">Work Name</th>
+          <th scope="col">Work image Title</th>
+          <th scope="col">Work Image</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        @forelse($testimonials as $testimonial)
+        @forelse($ourworks as $ourwork)
         <tr>
-          <td>{{ $testimonial->name }}</td>
-          <td>{{ $testimonial->details }}</td>
-          <td> <img src="{{ asset('storage/')}}/{{ $testimonial->image }}" width="80px" alt="Image not found"> </td>
+          <td>{{ $ourwork->work_image_name }}</td>
+          <td>{{ $ourwork->work_image_title }}</td>
+          <td> <img src="{{ asset('storage/')}}/{{ $ourwork->work_image }}" width="80px" alt="Image not found"> </td>
           <td>
             <a class="btn btn-warning" href="#">Edit</a> | <a class="btn btn-danger" href="#">Delete</a>
           </td>
@@ -47,7 +47,7 @@
         </div>
         <div class="form-group">
           <label for="about_title">Work Title :</label>
-          <input type="text" class="form-control {{ $errors->has('work_image_title') ? ' is-invalid' : '' }}" id="work_image_title" name="work_image_title" placeholder="Enter Work Image Title>
+          <input type="text" class="form-control {{ $errors->has('work_image_title') ? ' is-invalid' : '' }}" id="work_image_title" name="work_image_title" placeholder="Enter Work Image Title">
           @if ($errors->has('work_image_title'))
               <span class="invalid-feedback" role="alert">
                   <strong style="font-size:16px;">{{ $errors->first('work_image_title') }}</strong>
@@ -55,7 +55,7 @@
           @endif
         </div>
         <div class="form-group">
-          <label for="about_point">Work Image</label>
+          <label for="work_image">Work Image</label>
           <input type="file" class="form-control" id="work_image" name="work_image">
         </div>
         <button type="submit" class="btn btn-primary">Add Work</button>

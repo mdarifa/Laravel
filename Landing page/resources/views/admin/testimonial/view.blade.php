@@ -48,6 +48,7 @@
         <div class="form-group">
           <label for="about_details">Testimonial Details</label>
           <textarea class="form-control" name="details" rows="3" placeholder="Enter your Testimonial Details" ></textarea>
+        </div>
         <div class="form-group">
           <label for="about_point">Testimonial Image</label>
           <input type="file" class="form-control" id="image" name="image">

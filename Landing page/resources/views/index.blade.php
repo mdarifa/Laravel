@@ -32,7 +32,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <a class="navbar-brand page-scroll" href="#page-top">Innova</a>
-      <div class="phone"><span>Call Today</span>320-123-4321</div>
+      <div class="phone"><span>Call Today</span>{{ $contact_info->phone }}</div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -90,17 +90,9 @@
             <div class="col-lg-6 col-sm-6 col-xs-12">
               <ul>
                 <li>Years of Experience</li>
-                <li>Fully Insured</li>
-                <li>Cost Control Experts</li>
-                <li>100% Satisfaction Guarantee</li>
-              </ul>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-xs-12">
-              <ul>
-                <li>Free Consultation</li>
-                <li>Satisfied Customers</li>
-                <li>Project Management</li>
-                <li>Affordable Pricing</li>
+                <li>sfsfd</li>
+                <li>sfs sgsfg</li>
+                <li>784327</li>
               </ul>
             </div>
           </div>
@@ -115,52 +107,15 @@
     <div class="section-title">
       <h2>Our Services</h2>
     </div>
-    <div class="row">
+    @foreach($services as $service)
       <div class="col-md-4">
-        <div class="service-media"> <img src="{{ asset('/frontend_res')}}/img/services/service-1.jpg" alt=" "> </div>
+        <div class="service-media"> <img src="{{ asset('storage/')}}/{{ $service->service_image }}" alt=" "> </div>
         <div class="service-desc">
-          <h3>New Home Construction</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
+          <h3>{{ $service->service_title}}</h3>
+          <p>{{ $service->service_details}}</p>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="service-media"> <img src="{{ asset('/frontend_res')}}/img/services/service-2.jpg" alt=" "> </div>
-        <div class="service-desc">
-          <h3>Home Additions</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-media"> <img src="{{ asset('/frontend_res')}}/img/services/service-3.jpg" alt=" "> </div>
-        <div class="service-desc">
-          <h3>Bathroom Remodels</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="service-media"> <img src="{{ asset('/frontend_res')}}/img/services/service-4.jpg" alt=" "> </div>
-        <div class="service-desc">
-          <h3>Kitchen Remodels</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-media"> <img src="{{ asset('/frontend_res')}}/img/services/service-5.jpg" alt=" "> </div>
-        <div class="service-desc">
-          <h3>Windows & Doors</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-media"> <img src="{{ asset('/frontend_res')}}/img/services/service-6.jpg" alt=" "> </div>
-        <div class="service-desc">
-          <h3>Decks & Porches</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-        </div>
-      </div>
-    </div>
+      @endforeach
   </div>
 </div>
 <!-- Gallery Section -->
@@ -171,87 +126,17 @@
     </div>
     <div class="row">
       <div class="portfolio-items">
+        @foreach($works as $work)
         <div class="col-sm-6 col-md-4 col-lg-4">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/01-large.jpg" title="Project name" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="{{ asset('storage/')}}/{{ $work->work_image }}" title="{{ $work->work_image_title }}" data-lightbox-gallery="gallery1">
               <div class="hover-text">
-                <h4>Lorem Ipsum</h4>
+                <h4>{{ $work->work_image_name }}</h4>
               </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="{{ asset('storage/')}}/{{ $work->work_image}}" class="img-responsive" alt="Project Title"> </a> </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/02-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Adipiscing Elit</h4>
-              </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/02-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/03-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Lorem Ipsum</h4>
-              </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/03-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/04-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Lorem Ipsum</h4>
-              </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/04-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/05-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Adipiscing Elit</h4>
-              </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/05-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/06-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dolor Sit</h4>
-              </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/06-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/07-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dolor Sit</h4>
-              </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/07-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/08-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Lorem Ipsum</h4>
-              </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/08-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/09-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Adipiscing Elit</h4>
-              </div>
-              <img src="{{ asset('/frontend_res')}}/img/portfolio/09-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>

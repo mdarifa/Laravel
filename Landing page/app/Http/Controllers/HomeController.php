@@ -9,6 +9,8 @@ use App\Work;
 use App\Testimonial;
 use Carbon\Carbon;
 use App\Contact;
+use App\Service;
+
 
 class HomeController extends Controller
 {
@@ -92,6 +94,17 @@ class HomeController extends Controller
       }
       return back();
     }
+    public function adminaboutactive($about_id)
+    {
+      About::where('about_status',2)->update([
+        "about_status" => 1
+      ]);
+
+      About::find($about_id)->update([
+        "about_status" => 2
+      ]);
+      return back();
+    }
 
 
     public function admincontact()
@@ -149,7 +162,47 @@ class HomeController extends Controller
 
     public function adminourwork()
     {
-       $ourwork = Work::all();
-       return view('admin.our works.view', compact('ourwork'));
+       $ourworks = Work::all();
+       return view('admin.our works.view', compact('ourworks'));
+    }
+
+    public function adminourworkinsert(Request $request)
+    {
+      $newinfoid = Work::insertGetId([
+        "work_image_name" => $request->work_image_name,
+        "work_image_title" => $request->work_image_title,
+        "created_at" => Carbon::now(),
+      ]);
+      if($request->hasFile('work_image')){
+        $path = $request->file('work_image')->store('front_images');
+        Work::find($newinfoid)->update([
+          'work_image' => $path,
+        ]);
+        return back();
+      }
+      return back();
+    }
+    public function adminservice()
+    {
+
+       $services = Service::all();
+       return view('admin.service.view', compact('services'));
+    }
+
+    public function adminserviceinsert(Request $request)
+    {
+      $newinfoid = Service::insertGetId([
+        "service_title" => $request->service_title,
+        "service_details" => $request->service_details,
+        "created_at" => Carbon::now(),
+      ]);
+      if($request->hasFile('service_image')){
+        $path = $request->file('service_image')->store('front_images');
+        Service::find($newinfoid)->update([
+          'service_image' => $path,
+        ]);
+        return back();
+      }
+      return back();
     }
 }

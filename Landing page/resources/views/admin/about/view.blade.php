@@ -20,9 +20,21 @@
         <tr>
           <td>{{ $about->about_title }}</td>
           <td>{{ $about->about_details }}</td>
-          <td>{{ $about->about_status }}</td>
+          <td>
+            @if($about->about_status == 1)
+              <span class="btn btn-danger">Deactive</span>
+              @else
+              <span class="btn btn-success">Active</span>
+            @endif
+          </td>
           <td> <img src="{{ asset('storage/')}}/{{ $about->about_image }}" width="80px" alt="Image not found"> </td>
-          <td> <a href="#">Active</a> </td>
+          <td>
+            @if($about->about_status == 1)
+              <a href="{{ url('admin/about/active')}}/{{ $about->id}}" class="btn btn-success">Active</a>
+              @else
+              <a href="#" class="btn btn-danger">Deactive</a>
+            @endif
+          </td>
         </tr>
         @empty
           <tr>
@@ -63,6 +75,27 @@
 
         <button type="submit" class="btn btn-primary">Add About</button>
         </form>
+        <br><br>
+        <h3>Add About Point</h3>
+        <form action="{{ url('/admin/about/insert') }}" method="post" enctype="multipart/form-data">
+          @csrf
+          <div class="form-group">
+            <label for="about_title">About</label>
+            <select class="from-control" name="about_id">
+              <option value="">Select One</option>
+              @foreach($abouts as $about)
+
+              <option value="{{$about->about_id }}">{{$about->about_title }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="about_point">About Point</label>
+            <input type="text" class="form-control" id="about_point" name="about_point" placeholder="Enter About Point">
+
+          </div>
+          <button type="submit" class="btn btn-primary">Add About Point</button>
+          </form>
     </div>
   </div>
 </div>
