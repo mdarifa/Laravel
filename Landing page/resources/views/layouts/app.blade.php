@@ -46,6 +46,12 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ url('/admin/contact') }}">Contact</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/admin/testimonial') }}">Testimonial</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/admin/ourwork') }}">Our Works</a>
+                      </li>
                       @endauth
                     </ul>
 

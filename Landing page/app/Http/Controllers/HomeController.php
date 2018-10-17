@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Message;
 use App\About;
+use App\Work;
+use App\Testimonial;
 use Carbon\Carbon;
 use App\Contact;
 
@@ -91,10 +93,63 @@ class HomeController extends Controller
       return back();
     }
 
+
     public function admincontact()
     {
-      $old_info = Contact::find(1);
+      $old_info = Contact::findOrFail(1);
       return view('admin/contact/edit', compact('old_info'));
     }
 
+    public function admincontactupdate(Request $request)
+    {
+      $request->validate([
+        'address' => 'required',
+        'email' => 'required | email',
+        'phone' => 'required',
+        'google' => 'required',
+        'facbok' => 'required',
+        'twitter' => 'required',
+        'youtube' => 'required',
+      ]);
+      Contact::find(1)->update([
+        'address'  => $request->address,
+        'email' => $request->email,
+        'phone' => $request->phone,
+        'facebok' => $request->facebok,
+        'twitter' => $request->twitter,
+        'google' => $request->google,
+        'youtube' => $request->youtube,
+      ]);
+      return back();
+    }
+
+    public function admintestimonial()
+    {
+      $testimonials = Testimonial::all();
+      return view('admin.testimonial.view', compact('testimonials'));
+    }
+
+
+    public function admintestimonialinsert(Request $request)
+    {
+      $newinfoid = Testimonial::insertGetId([
+        "name" => $request->name,
+        "details" => $request->details,
+        "created_at" => Carbon::now()
+      ]);
+      if($request->hasFile('image')){
+        $path = $request->file('image')->store('front_images');
+        Testimonial::find($newinfoid)->update([
+          'image' => $path
+        ]);
+        return back();
+      }
+      return back();
+    }
+
+    public function adminourwork()
+    {
+       $ourwork = Work::all();
+       return view('admin.our works.view', compact('ourwork'));
+    }
 }

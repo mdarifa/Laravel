@@ -6,16 +6,19 @@ use Illuminate\Http\Request;
 use App\Message;
 use App\About;
 use App\Contact;
+use App\Testimonial;
 use Carbon\Carbon;
+use App\Work;
 
 class FrontController extends Controller
 {
     public function forntpage()
     {
       $about_info = About::where('about_status', 2)->firstorFail();
+      $testimonials = Testimonial::all();
       $contact_info = Contact::find(1)->firstorFail();
 
-      return view('index',compact('about_info','contact_info'));
+      return view('index',compact('about_info','contact_info','testimonials'));
     }
 
     public function team()

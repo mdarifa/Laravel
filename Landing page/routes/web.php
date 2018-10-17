@@ -15,3 +15,7 @@ Route::get('contact/message/restore/{message_id}', 'HomeController@contactmessag
 Route::get('/admin/about', 'HomeController@adminabout');
 Route::get('/admin/contact', 'HomeController@admincontact');
 Route::post('/admin/about/insert', 'HomeController@adminaboutinsert');
+Route::post('/admin/contact/update', 'HomeController@admincontactupdate');
+Route::get('/admin/testimonial', 'HomeController@admintestimonial');
+Route::get('/admin/ourwork', 'HomeController@adminourwork');
+Route::post('/admin/testimonial/insert', 'HomeController@admintestimonialinsert');

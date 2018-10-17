@@ -173,7 +173,7 @@
       <div class="portfolio-items">
         <div class="col-sm-6 col-md-4 col-lg-4">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/01-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="{{ asset('/frontend_res')}}/img/portfolio/01-large.jpg" title="Project name" data-lightbox-gallery="gallery1">
               <div class="hover-text">
                 <h4>Lorem Ipsum</h4>
               </div>
@@ -262,63 +262,18 @@
     <div class="section-title">
       <h2>Testimonials</h2>
     </div>
-    <div class="row">
+      @foreach($testimonials as $testimonial)
+
       <div class="col-md-4">
         <div class="testimonial">
-          <div class="testimonial-image"> <img src="{{ asset('/frontend_res')}}/img/testimonials/01.jpg" alt=""> </div>
+          <div class="testimonial-image"> <img src="{{ asset('storage/')}}/{{ $testimonial->image }}" alt=""> </div>
           <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."</p>
-            <div class="testimonial-meta"> - John Doe </div>
+            <p>"{{ $testimonial->details}}"</p>
+            <div class="testimonial-meta"> - {{ $testimonial->name}} </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="{{ asset('/frontend_res')}}/img/testimonials/02.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis."</p>
-            <div class="testimonial-meta"> - Johnathan Doe </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="{{ asset('/frontend_res')}}/img/testimonials/03.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."</p>
-            <div class="testimonial-meta"> - John Doe </div>
-          </div>
-        </div>
-      </div>
-      <div class="row"> </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="{{ asset('/frontend_res')}}/img/testimonials/04.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."</p>
-            <div class="testimonial-meta"> - Johnathan Doe </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="{{ asset('/frontend_res')}}/img/testimonials/05.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."</p>
-            <div class="testimonial-meta"> - John Doe </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="{{ asset('/frontend_res')}}/img/testimonials/06.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis."</p>
-            <div class="testimonial-meta"> - Johnathan Doe </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        @endforeach
   </div>
 </div>
 <!-- Contact Section -->
@@ -373,7 +328,7 @@
       <div class="row">
         <div class="social">
           <ul>
-            <li><a href="{{ $contact_info->facebook }}"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="{{ $contact_info->facebok }}"><i class="fa fa-facebook"></i></a></li>
             <li><a href="{{ $contact_info->twitter }}"><i class="fa fa-twitter"></i></a></li>
             <li><a href="{{ $contact_info->google }}"><i class="fa fa-google-plus"></i></a></li>
             <li><a href="{{ $contact_info->youtube }}"><i class="fa fa-youtube"></i></a></li>
