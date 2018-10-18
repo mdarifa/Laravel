@@ -11,7 +11,9 @@ use Carbon\Carbon;
 use App\Contact;
 use App\Service;
 use App\header;
-
+use Auth;
+use Hash;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -249,10 +251,18 @@ class HomeController extends Controller
     {
       $request->validate([
         'old_password' => 'required',
-        'new_password' => 'required',
-        'confirm_password' => 'required',
+        'new_password' => 'required | min:6 | max:15',
+        'confirm_password' => 'required | same:new_password'
       ]);
-    
+      if(Hash::check($request->old_password, Auth::user()->password)){
+        User::find(Auth::user()->id)->update([
+          'password' => bcrypt($request->new_password),
+        ]);
+        return back()->with('status',"Password change successfully!");
+      }
+      else {
+        return back()->withErrors();
+      }
     }
 
 

@@ -4,9 +4,15 @@
   <div class="container">
     <h1 class="text-center">Change Password</h1>
     <div class="row">
+
       <div class="col-md-6 offset-3">
         <form action="{{ route('changepasswordupdate')}}" method="post">
             @csrf
+            @if(session('status'))
+            <div class="alert alert-success">
+              password change successfully
+            </div>
+            @endif
             <div class="form-group">
               <label for="old_password">Old Password:</label>
               <input type="password" class="form-control {{ $errors->has('old_password') ? ' is-invalid' : '' }}" name="old_password" >
