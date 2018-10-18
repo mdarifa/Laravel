@@ -10,18 +10,20 @@ use App\Testimonial;
 use Carbon\Carbon;
 use App\Work;
 use App\Service;
+use App\header;
 
 class FrontController extends Controller
 {
     public function forntpage()
     {
       $about_info = About::where('about_status', 2)->firstorFail();
+      $banner = header::where('status', 2)->firstorFail();
       $testimonials = Testimonial::all();
       $works = Work::all();
       $services = Service::all();
       $contact_info = Contact::find(1)->firstorFail();
 
-      return view('index',compact('about_info','contact_info','testimonials','works','services'));
+      return view('index',compact('about_info','contact_info','testimonials','works','services','banner'));
     }
 
     public function team()

@@ -10,6 +10,7 @@ use App\Testimonial;
 use Carbon\Carbon;
 use App\Contact;
 use App\Service;
+use App\header;
 
 
 class HomeController extends Controller
@@ -205,4 +206,54 @@ class HomeController extends Controller
       }
       return back();
     }
+
+    public function adminbanner()
+    {
+       $banners = header::all();
+       return view('admin.banner.view', compact('banners'));
+    }
+
+    public function adminbannerinsert(Request $request)
+    {
+      $newinfoid = header::insertGetId([
+        "title" => $request->title,
+        "description" => $request->details,
+        "created_at" => Carbon::now()
+      ]);
+      if($request->hasFile('image')){
+        $path = $request->file('image')->store('front_images');
+        header::find($newinfoid)->update([
+          'image' => $path
+        ]);
+        return back();
+      }
+      return back();
+    }
+
+    public function adminbanneractive($banner_id)
+    {
+      header::where('status',2)->update([
+        "status" => 1
+      ]);
+
+      header::find($banner_id)->update([
+        "status" => 2
+      ]);
+      return back();
+    }
+    public function changepassword()
+    {
+    return view('admin.changepassword.view');
+    }
+    public function changepasswordupdate(Request $request)
+    {
+      $request->validate([
+        'old_password' => 'required',
+        'new_password' => 'required',
+        'confirm_password' => 'required',
+      ]);
+    
+    }
+
+
 }
