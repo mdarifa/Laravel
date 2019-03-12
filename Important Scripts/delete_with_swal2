@@ -1,0 +1,25 @@
+$(document).ready( function(){
+        $('.delete_link').click(function(){
+            var redirect_link = $(this).val();
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if (result.value) {
+                window.location.href = redirect_link ;
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                )
+                }
+            })
+        });
+    });
+    
+    //Note: first pass the link with a button in value field
