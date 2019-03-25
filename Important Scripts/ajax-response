@@ -1,0 +1,30 @@
+//Ajax Code to get sub category after select category
+<script>
+        $(document).ready(function(){
+            $('#category').change(function(){
+                var category = $(this).val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type:'POST',
+	                url:'/getsubcategorylist',
+                    data: {category: category},
+	                success: function (data) {
+	                   $( "#sub_category" ).html(data);
+	                }
+                });
+            });
+        });
+    </script>
+    
+    //code for controller
+    $stringToSend = "";
+        $subs= SubCategory::where('category_id',$request->category)->get();
+        foreach ($subs as $key => $sub) {
+            $stringToSend .="<option value=".$sub->id.'>'.$sub->subcategory_name.'</option>';
+        }
+        echo $stringToSend;
