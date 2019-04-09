@@ -1,0 +1,16 @@
+public function makelink()
+    {
+        Artisan::call('storage:link');
+        echo "Success";
+    }
+    
+    
+    public function makelink()
+    {
+        $exitCode = Artisan::call('config:clear');
+        $exitCode = Artisan::call('cache:clear');
+        $exitCode = Artisan::call('view:cache');
+        $exitCode = Artisan::call('config:cache');
+        $exitCode = Artisan::call('optimize');
+        return 'DONE'; //Return anything
+    }
