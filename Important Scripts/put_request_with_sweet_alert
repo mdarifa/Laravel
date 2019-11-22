@@ -1,0 +1,39 @@
+//blade code
+<td>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a class="btn btn-warning btn-sm" href="{{ route('latest_news.edit',[$latestNews->id]) }}">Edit</a>
+        <button class="btn btn-danger btn-sm news_delete" value="news_delete_form{{ $latestNews->id }}">Delete</button>
+        <form id="news_delete_form{{ $latestNews->id }}" action="{{ url('latest_news',[$latestNews->id]) }}" method="post">
+            @method('DELETE')
+            @csrf
+        </form>
+     </div>
+</td>
+
+
+//javascript code
+<script>
+    $(document).ready( function(){
+        $('.news_delete').click(function(){
+            var from_id = $(this).val();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    document.getElementById(from_id).submit();
+                    Swal.fire(
+                        'Deleted!',
+                        'Latest News has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        });
+    });
+</script>
