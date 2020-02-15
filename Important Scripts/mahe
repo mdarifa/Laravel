@@ -5,7 +5,6 @@
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phn_number' => $request->phn_number,
-            'created_at' => Carbon::now()
         ]);
 
         Doctor::create([
