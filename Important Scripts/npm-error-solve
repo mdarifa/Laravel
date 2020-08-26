@@ -1,0 +1,5 @@
+//add this line to package.json
+
+"bin": {
+    "cross-env": "dist/bin/cross-env.js"
+},
