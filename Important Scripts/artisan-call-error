@@ -1,0 +1,8 @@
+// If artisan call function show Undefine constant STDIN error just add '--force' => true this line in the function
+
+public function migrate(){
+        Artisan::call('migrate',[
+            '--force' => true
+        ]);
+        echo "done";
+}
